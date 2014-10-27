@@ -17,8 +17,8 @@ self.port.on("setLiveCount", function(liveCount)
 			document.getElementById("liveStreamCount").style.color = "#444444";
 		
 		if (liveCount != -1)
-			document.getElementById("liveStreamCount").innerHTML = liveCount;
+			document.getElementById("liveStreamCount").textContent = liveCount;
 		else
-			document.getElementById("liveStreamCount").innerHTML = "X";
+			document.getElementById("liveStreamCount").textContent = "X";
 	}
 );

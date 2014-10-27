@@ -21,8 +21,8 @@ function addStreamer()
 				
 	if (newStreamerName.search(/[^a-zA-Z0-9_]/) != -1)
 	{
-		document.getElementById("errorBox").innerHTML = "Invalid streamer name";
-		setTimeout(function() {document.getElementById("errorBox").innerHTML = ""}, 5000);
+		document.getElementById("errorBox").textContent = "Invalid streamer name";
+		setTimeout(function() {document.getElementById("errorBox").textContent = ""}, 5000);
 		return;
 	}
 			
@@ -30,8 +30,8 @@ function addStreamer()
 	{
 		if (streamers[i].name == newStreamerName)
 		{
-			document.getElementById("errorBox").innerHTML = "Streamer already in list";
-			setTimeout(function() {document.getElementById("errorBox").innerHTML = ""}, 5000);
+			document.getElementById("errorBox").textContent = "Streamer already in list";
+			setTimeout(function() {document.getElementById("errorBox").textContent = ""}, 5000);
 			return;
 		}
 	}
@@ -57,11 +57,11 @@ function buildInputPanelList()
 		
 		var streamerTitle = document.createElement("span");
 		streamerTitle.className = "streamerTitle";
-		streamerTitle.innerHTML = streamers[i].name;
+		streamerTitle.textContent = streamers[i].name;
 		
 		var removeButton = document.createElement("div");
 		removeButton.className = "removeButton";
-		removeButton.innerHTML = "X";
+		removeButton.textContent = "X";
 		removeButton.onclick = getRemoveButtonHandler(streamers[i]);
 		
 		newStreamerBlock.appendChild(streamerTitle);
@@ -98,7 +98,7 @@ self.port.on("createEmptyBlock", function createEmptyBlock(streamerName)
 		var streamerTitle = document.createElement("a");
 		streamerTitle.id = "streamerTitle-" + streamerName;
 		streamerTitle.className = "streamerTitle";
-		streamerTitle.innerHTML = streamerName;
+		streamerTitle.textContent = streamerName;
 		
 		var streamerStatus = document.createElement("span");
 		streamerStatus.id = "streamerStatus-" + streamerName;
@@ -130,7 +130,7 @@ self.port.on("setStreamerLogo", function setStreamerLogo(streamerName, streamerL
 self.port.on("setRetrieving", function setRetrieving(streamerName)
 	{
 		document.getElementById("streamerStatus-" + streamerName).style.color = "#FFFFFF";
-		document.getElementById("streamerStatus-" + streamerName).innerHTML = "Retrieving...";
+		document.getElementById("streamerStatus-" + streamerName).textContent = "Retrieving...";
 	}
 );
 
@@ -139,12 +139,12 @@ self.port.on("setStatus", function setStatus(streamerName, isLive, gameName, exi
 		if (exists)
 		{
 			document.getElementById("streamerStatus-" + streamerName).style.color = isLive ? ONLINE_COLOR : OFFLINE_COLOR;
-			document.getElementById("streamerStatus-" + streamerName).innerHTML = isLive ? ("Live - " + gameName) : "Offline";
+			document.getElementById("streamerStatus-" + streamerName).textContent = isLive ? ("Live - " + gameName) : "Offline";
 		}
 		else
 		{
 			document.getElementById("streamerStatus-" + streamerName).style.color = OFFLINE_COLOR;
-			document.getElementById("streamerStatus-" + streamerName).innerHTML = "This user does not exist!";
+			document.getElementById("streamerStatus-" + streamerName).textContent = "This user does not exist!";
 		}
 	}
 );
@@ -152,9 +152,9 @@ self.port.on("setStatus", function setStatus(streamerName, isLive, gameName, exi
 self.port.on("changeNoStreamerMessage", function changeNoStreamerMessage(show)
 	{
 		if (show)
-			document.getElementById("noStreamerMessage").innerHTML = "Your stream list is empty!";
+			document.getElementById("noStreamerMessage").textContent = "Your stream list is empty!";
 		else
-			document.getElementById("noStreamerMessage").innerHTML = "";
+			document.getElementById("noStreamerMessage").textContent = "";
 	}
 );
 
