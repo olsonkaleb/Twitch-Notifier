@@ -1,10 +1,6 @@
-var streamStatusPanel = document.getElementById("streamStatusPanel");
-var ONLINE_COLOR = "#208F15";
-var OFFLINE_COLOR = "#F72A4C";
-var DEFAULT_STREAMER_LOGO = "http://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_150x150.png";
-var streamers;
+var TwitchTracker_streamers;
 
-var Streamer = {
+var TwitchTracker_Streamer = {
 	name: "",
 	isLive: false,
 	gameBeingPlayed: "",
@@ -13,7 +9,7 @@ var Streamer = {
 
 function addStreamer()
 {
-	var newStreamer = Object.create(Streamer);
+	var newStreamer = Object.create(TwitchTracker_Streamer);
 	var newStreamerName = document.getElementById("streamerInputBox").value;
 
 	if (newStreamerName == "")
@@ -83,6 +79,8 @@ function getRemoveButtonHandler(streamer)
 
 self.port.on("createEmptyBlock", function createEmptyBlock(streamerName)
 	{
+		var streamStatusPanel = document.getElementById("streamStatusPanel");
+		
 		var newBlock = document.createElement("div");
 		newBlock.className = "streamerBlock";
 		newBlock.id = "streamerBlock-" + streamerName;
@@ -90,7 +88,7 @@ self.port.on("createEmptyBlock", function createEmptyBlock(streamerName)
 		var streamerLogo = document.createElement("img");
 		streamerLogo.id = "streamerLogo-" + streamerName;
 		streamerLogo.className = "streamerLogo";
-		streamerLogo.src = DEFAULT_STREAMER_LOGO;
+		streamerLogo.src = "http://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_150x150.png";
 		
 		var statusBlock = document.createElement("div");
 		statusBlock.className = "statusBlock";
@@ -138,12 +136,12 @@ self.port.on("setStatus", function setStatus(streamerName, isLive, gameName, exi
 	{
 		if (exists)
 		{
-			document.getElementById("streamerStatus-" + streamerName).style.color = isLive ? ONLINE_COLOR : OFFLINE_COLOR;
+			document.getElementById("streamerStatus-" + streamerName).style.color = isLive ? "#208F15" : "#F72A4C";
 			document.getElementById("streamerStatus-" + streamerName).textContent = isLive ? ("Live - " + gameName) : "Offline";
 		}
 		else
 		{
-			document.getElementById("streamerStatus-" + streamerName).style.color = OFFLINE_COLOR;
+			document.getElementById("streamerStatus-" + streamerName).style.color = "#F72A4C";
 			document.getElementById("streamerStatus-" + streamerName).textContent = "This user does not exist!";
 		}
 	}
@@ -162,13 +160,15 @@ self.port.on("setClickListeners", function setClickListeners()
 	{
 		document.getElementById("streamersButton").onclick = function()
 		{
-			self.port.emit("openStreamersPanel");
+			self.port.emit("openInputPanel");
 		};
 	}
 );
 
 self.port.on("clearStreamList", function clearStreamList()
 	{
+		var streamStatusPanel = document.getElementById("streamStatusPanel");
+		
 		while (streamStatusPanel.firstChild)
 			streamStatusPanel.removeChild(streamStatusPanel.firstChild);
 	}
