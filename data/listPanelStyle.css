@@ -1,0 +1,70 @@
+body 
+{
+	font-family: 'Arial', Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #234B5B;
+}
+.streamerLogo 
+{
+	width: 46px;
+	height: 46px;
+	float: left;
+}
+.streamerBlock 
+{
+	width: 227px;
+	height: 46px;
+	margin-top: 4px;
+	cursor: pointer;
+	-moz-user-select: none;
+}
+.statusBlock 
+{
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	float: left;
+	width: 175px;
+	height: 46px;
+	margin-left: 6px;
+	background-color: #0E3745;
+}
+.streamerTitle 
+{
+	font-size: 24px;
+	color: #FFFFFF;
+	margin-left: 6px;
+}
+.streamerStatus 
+{
+	font-size: 12px;
+	margin-left: 6px;
+}
+.streamerBlock:hover 
+{
+	background-color: #436B7B;
+	margin-left: 3px;
+}
+.streamerBlock:hover .statusBlock 
+{
+	background-color: #133B4B;
+}
+#streamersButton
+{
+	cursor: pointer;
+	background-color: #0E3745;
+	color: #FFFFFF;
+	margin-bottom: 6px;
+	text-align: center; 
+	position: fixed;
+	bottom: 0px;
+	width: 257px;
+	height: 20px;
+	-moz-user-select: none;
+}
+#streamersButton:hover 
+{
+	background-color: #187696;
+}

@@ -1,0 +1,9 @@
+{
+  "name": "twitch_stream_notifier",
+  "title": "Twitch Stream Notifier",
+  "id": "jid1-Uf4TEia1pOR4Sw",
+  "description": "Displays notifications when Twitch streams go online",
+  "author": "Kaleb Olson",
+  "license": "MPL 2.0",
+  "version": "0.1"
+}
