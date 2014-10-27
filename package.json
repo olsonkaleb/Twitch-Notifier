@@ -1,8 +1,8 @@
 {
-  "name": "twitcher",
-  "title": "Twitcher",
+  "name": "twitch_tracker",
+  "title": "Twitch Tracker",
   "id": "jid1-Uf4TEia1pOR4Sw",
-  "description": "Monitors Twitch streams and lets you know who's online and what games they're playing.",
+  "description": "Tracks yoru favorite Twitch streams and lets you know who's online and what games they're playing.",
   "author": "Kaleb Olson",
   "license": "MPL 2.0",
   "version": "1.0"
